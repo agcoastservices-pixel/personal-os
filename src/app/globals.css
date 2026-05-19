@@ -3,25 +3,62 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0c;
+  --foreground: #f0f0f2;
+  --surface:    #101013;
+  --surface-2:  #16161a;
+  --border:     rgba(255,255,255,0.07);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 16px; }
 
 body {
-  color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Scrollbar — very minimal */
+::-webkit-scrollbar { width: 3px; height: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.18); }
+
+/* Progress/score gradient bar */
+.progress-bar { background: linear-gradient(90deg, #3d91ff, #9b7cf8); }
+.progress-bar-green { background: linear-gradient(90deg, #00c896, #00a876); }
+
+/* Status colors */
+.status-great { color: #00c896; }
+.status-ok    { color: #3d91ff; }
+.status-drag  { color: #ff4757; }
+
+/* WHOOP-style metric band row */
+.metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.metric-row:last-child { border-bottom: none; }
+
+/* Thin dividers */
+.divider { height: 1px; background: rgba(255,255,255,0.06); }
+
+/* Score ring animation */
+@keyframes ping-slow {
+  0%   { transform: scale(1);   opacity: 0.5; }
+  100% { transform: scale(1.8); opacity: 0;   }
+}
+.mic-ring { animation: ping-slow 1.5s cubic-bezier(0,0,0.2,1) infinite; }
+
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+  .text-balance { text-wrap: balance; }
+  .font-display { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif; }
+  .tabular { font-variant-numeric: tabular-nums; }
 }
