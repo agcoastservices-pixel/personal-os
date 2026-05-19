@@ -135,7 +135,7 @@ export default function DailyScoreGauge({ scoreData }: Props) {
 
       {!hasData && (
         <p className="text-[11px] text-white/20 text-center pb-1">
-          Log today's data to see your score
+          Log today&apos;s data to see your score
         </p>
       )}
 
